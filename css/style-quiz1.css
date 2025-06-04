@@ -38,7 +38,7 @@
     }
 
     .logo {
-      max-width: 150px;
+      max-width: 200px;
       margin: 0 auto 20px;
     }
 
@@ -154,7 +154,27 @@
 
     .answers button.wrong::after {
       content: " ❌";
-      color: white;
+      color: rgb(255, 255, 255);
       font-weight: bold;
       margin-left: 8px;
+    }
+
+    .fixed-home-button {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: #2779e4;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      font-size: 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      z-index: 1000;
+      transition: background-color 0.3s;
+    }
+
+    .fixed-home-button:hover {
+      background-color: #194680;
     }

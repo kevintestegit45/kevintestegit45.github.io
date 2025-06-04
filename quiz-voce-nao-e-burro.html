@@ -7,84 +7,186 @@
   <title>Quiz Você Não é Burro - Overclock</title>
 </head>
 <body>
-  <div class="quiz-container">
-    <div class="logo">
-      <img src="./img/over logo sem fundo.png" alt="Logo Overclock" />
-    </div>
-    <h2>Você não é burro!</h2>
-    <div id="quiz">
+  <main class="quiz-container">
+    <h2>🧠 Você não é burro... só está faltando Overclock <br>Preparado(a) para descobrir?</h2>
+    <br>
+    <br>
+    <section id="quiz">
       <div class="question" id="question-title"></div>
       <div class="answers" id="answers"></div>
-      <button class="next-button" id="nextBtn" style="display: none;">Próxima</button>
-    </div>
-    <div id="result" class="result-box" style="display: none;">
+      <button class="next-button" id="nextBtn" style="display: none;" aria-label="Próxima pergunta">Próxima</button>
+    </section>
+    <section id="result" class="result-box" style="display: none;">
       <div class="result" id="resultText"></div>
       <div class="button-container">
-        <button class="restart-button" onclick="goToStart()">Voltar para o Início</button>
+        <button class="restart-button" id="restartBtn">Voltar para o Início</button>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
 
+  <button class="fixed-home-button" onclick="window.location.href='index.html'">🏠 Início</button>
+  
   <script>
     const questions = [
-      { q: "Quantos meses têm 28 dias?", a: ["1", "2", "Todos", "3"], correct: 2 },
-      { q: "Se há três maçãs e você pega duas, quantas você tem?", a: ["1", "2", "3", "4"], correct: 1 },
-      { q: "Qual é a capital do Brasil?", a: ["Rio de Janeiro", "Brasília", "São Paulo", "Bahia"], correct: 1 },
-      { q: "Um pato põe um ovo no telhado. Para que lado ele rola?", a: ["Esquerda", "Direita", "Nenhum lado", "Pra cima"], correct: 2 },
-      { q: "Quantas pernas tem uma aranha?", a: ["6", "8", "10", "9"], correct: 1 },
-      { q: "Quanto é metade de dois mais dois?", a: ["2", "3", "1", "22"], correct: 1 },
-      { q: "O que pesa mais, um quilo de chumbo ou de algodão?", a: ["Chumbo", "Algodão", "Pesam igual", "Nenhuma das opções"], correct: 2 },
-      { q: "Qual animal é conhecido por rir?", a: ["Hiena", "Macaco", "Cão", "Gato"], correct: 0 },
-      { q: "Qual planeta é conhecido como Planeta Vermelho?", a: ["Júpiter", "Marte", "Saturno", "Netuno"], correct: 1 },
-      { q: "Qual instrumento tem teclas, pedais e cordas?", a: ["Piano", "Violão", "Flauta", "Viola"], correct: 0 }
+      { 
+        q: "O que pesa mais, um quilo de chumbo ou um quilo de algodão?", 
+        a: [
+          "O chumbo, claro", 
+          "O algodão, porque é mais leve", 
+          "Pesam igual", 
+          "Depende da umidade"
+        ], 
+        correct: 2 
+      },
+      { 
+        q: "Quais meses têm 28 dias?", 
+        a: [
+          "Só fevereiro", 
+          "Fevereiro e agosto", 
+          "Nenhum", 
+          "Todos"
+        ], 
+        correct: 3 
+      },
+      { 
+        q: "Se há três maçãs e você pega duas, quantas você tem?", 
+        a: [
+          "1", 
+          "2", 
+          "3", 
+          "Nenhuma"
+        ], 
+        correct: 1 
+      },
+      { 
+        q: "Qual dessas palavras está escrita corretamente?", 
+        a: [
+          "Exceção", 
+          "Excessão", 
+          "Exceçao", 
+          "Ecessão"
+        ], 
+        correct: 0 
+      },
+      { 
+        q: "Qual é a capital do Brasil?", 
+        a: [
+          "Brasília", 
+          "São Paulo", 
+          "Rio de Janeiro", 
+          "Só os estados têm capitais"
+        ], 
+        correct: 0 
+      },
+      { 
+        q: "Por que os óculos embaçam quando saímos de um ambiente frio para um quente?", 
+        a: [
+          "Porque o material da lente dilata e cria uma película", 
+          "Porque o calor faz o vidro 'suar'", 
+          "Porque o vapor do ar quente condensa na superfície fria", 
+          "Porque os óculos precisam se ajustar à nova temperatura do rosto"
+        ], 
+        correct: 2 
+      },
+      { 
+        q: "Um relógio analógico marca 3h15. Qual o ângulo entre o ponteiro das horas e dos minutos?", 
+        a: [
+          "0°", 
+          "90°", 
+          "7,5°", 
+          "15°"
+        ], 
+        correct: 2 
+      },
+      { 
+        q: "Qual instrumento musical possui teclas, pedais e cordas?", 
+        a: [
+          "Piano", 
+          "Violão", 
+          "Bateria", 
+          "Flauta"
+        ], 
+        correct: 0 
+      },
+      { 
+        q: "Qual planeta do sistema solar é conhecido por ter uma rotação tão lenta que um dia lá dura mais que um ano?", 
+        a: [
+          "Mercúrio", 
+          "Júpiter", 
+          "Vênus", 
+          "Plutão"
+        ], 
+        correct: 2 
+      },
+      { 
+        q: "Por que sentimos calor ao usar roupas pretas no sol?", 
+        a: [
+          "Porque o preto retém o suor no corpo", 
+          "Porque a cor preta estimula mais a circulação", 
+          "Porque o preto absorve mais radiação solar", 
+          "Porque tecidos escuros impedem o corpo de respirar"
+        ], 
+        correct: 2 
+      }
     ];
+
+    const questionTitle = document.getElementById("question-title");
+    const answersDiv = document.getElementById("answers");
+    const nextBtn = document.getElementById("nextBtn");
+    const resultBox = document.getElementById("result");
+    const resultText = document.getElementById("resultText");
+    const quizSection = document.getElementById("quiz");
+    const restartBtn = document.getElementById("restartBtn");
 
     let currentQuestion = 0;
     let score = 0;
     let selectedAnswer = null;
-    let hasAnswered = false;
 
     function displayQuestion() {
       const question = questions[currentQuestion];
-      document.getElementById("question-title").textContent = question.q;
+      questionTitle.textContent = question.q;
 
-      const answersDiv = document.getElementById("answers");
       answersDiv.innerHTML = "";
       selectedAnswer = null;
-      hasAnswered = false;
 
       question.a.forEach((text, index) => {
         const btn = document.createElement("button");
-        btn.innerHTML = `<span class="btn-text">${text}</span>`;
-        btn.onclick = () => {
-          if (hasAnswered) return;
+        btn.textContent = text;
+        btn.classList.add("answer-button");
+        btn.setAttribute('aria-label', `Resposta ${index + 1}: ${text}`);
 
-          hasAnswered = true;
-          selectedAnswer = index;
-
-          const allButtons = document.querySelectorAll(".answers button");
-          allButtons.forEach((b, i) => {
-            if (i === question.correct) {
-              b.classList.add("correct");
-            } else if (i === selectedAnswer) {
-              b.classList.add("wrong");
-            }
-            b.disabled = true;
-          });
-
-          if (selectedAnswer === question.correct) score++;
-
-          setTimeout(() => {
-            document.getElementById("nextBtn").style.display = "inline-block";
-          }, 500);
-        };
+        btn.addEventListener('click', () => handleAnswer(index, btn));
         answersDiv.appendChild(btn);
       });
 
-      document.getElementById("nextBtn").style.display = "none";
+      nextBtn.style.display = "none";
     }
 
-    document.getElementById("nextBtn").addEventListener("click", () => {
+    function handleAnswer(index, btn) {
+      if (selectedAnswer !== null) return;
+
+      selectedAnswer = index;
+
+      const question = questions[currentQuestion];
+      const allButtons = document.querySelectorAll(".answers button");
+
+      allButtons.forEach((b, i) => {
+        if (i === question.correct) {
+          b.classList.add("correct");
+        } else if (i === selectedAnswer) {
+          b.classList.add("wrong");
+        }
+        b.disabled = true;
+      });
+
+      if (selectedAnswer === question.correct) {
+        score++;
+      }
+
+      nextBtn.style.display = "inline-block";
+    }
+
+    nextBtn.addEventListener("click", () => {
       currentQuestion++;
       if (currentQuestion < questions.length) {
         displayQuestion();
@@ -93,16 +195,37 @@
       }
     });
 
-    function showResult() {
-      document.getElementById("quiz").style.display = "none";
-      document.getElementById("result").style.display = "block";
-      let message = score >= 8 ? "Você é um Gênio!" : score >= 5 ? "Você é Lerdo!" : "Você é Burro!";
-      document.getElementById("resultText").innerHTML = `Você acertou <strong>${score}</strong> de <strong>${questions.length}</strong>!<br><br>${message}`;
+   function showResult() {
+      quizSection.style.display = "none";
+      resultBox.style.display = "block";
+
+      let message = "";
+
+      if (score >= 6 && score <= 8) {
+        message = "🧠 Você acerta, mas não impressiona <br><br> Está no caminho. Já pensa rápido, mas ainda dá umas escorregadas que fazem a gente suspeitar.<br><br>👉 Um Overclock pode te levar daquele 'quase' para o 'agora sim'.";
+      } else if (score >= 4 && score <= 5) {
+        message = "🧠 Dá pra melhorar (bem)<br><br>A cabeça funciona, mas parece que tirou o dia de folga.<br><br>👉 Experimenta um Overclock e vê se engrena.";
+      } else if (score >= 1 && score <= 3) {
+        message = "🧠 Talvez seja burro sim <br><br>Você errou com confiança e acertou quase nada. <br><br>👉 Toma um Overclock e descobre se o problema é falta de foco — ou de lógica mesmo.";
+      } else {
+        message = "😅 Nenhum acerto! Tá na hora de tomar um Overclock e rever as bases!";
+      }
+
+      const overclockLink = `
+        <div style="margin-top: 20px; padding: 15px; background-color: #ff4757; color: white; border-radius: 10px; text-align: center;">
+          <a href="https://bebaoverclock.com.br" target="_blank" style="color: white; text-decoration: none; font-weight: bold; font-size: 16px;">
+            🚀 Beba Overclock e turbine sua mente agora!
+          </a>
+        </div>
+      `;
+        
+      resultText.innerHTML = `Você acertou <strong>${score}</strong> de <strong>${questions.length}</strong>!<br><br>${message}${overclockLink}`;
     }
 
-    function goToStart() {
+
+    restartBtn.addEventListener("click", () => {
       window.location.href = "index.html";
-    }
+    });
 
     displayQuestion();
   </script>
