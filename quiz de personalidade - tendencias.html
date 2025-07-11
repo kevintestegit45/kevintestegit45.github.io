@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style-tendencias.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo-over-.ico">
+    <title>Qual é a sua Tendência?</title>
+  </head>
+  <body>
+
+    <button class="fixed-home-button" onclick="window.location.href='index.html'">🏠 Início</button>
+
+    <main class="quiz-container">
+      <h2>🧠 Questionário: Qual é a sua Tendência?</h2>
+      <p>Escolha a alternativa que mais se parece com você em cada pergunta.</p>
+
+      <form id="quizForm">
+        <div class="question-block">
+          <p>1. Quando alguém me dá uma meta ou tarefa com prazo, eu geralmente…</p>
+          <label><input type="radio" name="q1" value="A"> A) Sigo o prazo facilmente, sem estresse.</label>
+          <label><input type="radio" name="q1" value="B"> B) Cumpro se eu achar a tarefa válida.</label>
+          <label><input type="radio" name="q1" value="C"> C) Me esforço ao máximo para cumprir porque não quero decepcionar.</label>
+          <label><input type="radio" name="q1" value="D"> D) Não gosto que me digam o que fazer, mesmo com prazos.</label>
+        </div>
+
+        <div class="question-block">
+          <p>2. Quando defino uma meta pessoal (como ir à academia ou estudar), eu…</p>
+          <label><input type="radio" name="q2" value="A"> A) Sigo a meta com disciplina.</label>
+          <label><input type="radio" name="q2" value="B"> B) Sigo se entender claramente o benefício.</label>
+          <label><input type="radio" name="q2" value="C"> C) Tenho dificuldade, a menos que alguém me cobre.</label>
+          <label><input type="radio" name="q2" value="D"> D) Resisto, mesmo sendo uma meta minha.</label>
+        </div>
+
+        <div class="question-block">
+          <p>3. Qual dessas frases mais parece com você?</p>
+          <label><input type="radio" name="q3" value="A"> A) “Regras existem por um motivo.”</label>
+          <label><input type="radio" name="q3" value="B"> B) “Preciso entender o porquê antes de aceitar.”</label>
+          <label><input type="radio" name="q3" value="C"> C) “Me comprometer com alguém me ajuda a cumprir.”</label>
+          <label><input type="radio" name="q3" value="D"> D) “Eu não sigo regras só porque estão aí.”</label>
+        </div>
+
+        <div class="question-block">
+          <p>4. Quando um chefe ou professor impõe uma regra arbitrária, você…</p>
+          <label><input type="radio" name="q4" value="A"> A) Segue a regra, mesmo se parecer estranha.</label>
+          <label><input type="radio" name="q4" value="B"> B) Questiona e só segue se fizer sentido.</label>
+          <label><input type="radio" name="q4" value="C"> C) Tenta seguir, mesmo sem gostar, para evitar conflito.</label>
+          <label><input type="radio" name="q4" value="D"> D) Fica incomodado e tende a desafiar.</label>
+        </div>
+
+        <div class="question-block">
+          <p>5. Para manter hábitos saudáveis, o que mais te ajuda?</p>
+          <label><input type="radio" name="q5" value="A"> A) Ter uma rotina clara e definida.</label>
+          <label><input type="radio" name="q5" value="B"> B) Saber exatamente o benefício de cada hábito.</label>
+          <label><input type="radio" name="q5" value="C"> C) Um grupo, coach ou alguém cobrando.</label>
+          <label><input type="radio" name="q5" value="D"> D) Ter liberdade para fazer do seu jeito, quando quiser.</label>
+        </div>
+
+        <div class="question-block">
+          <p>6. Você é do tipo que cumpre promessas pessoais, como “segunda começo a dieta”?</p>
+          <label><input type="radio" name="q6" value="A"> A) Sim, cumpro o que prometo a mim mesmo.</label>
+          <label><input type="radio" name="q6" value="B"> B) Sim, se eu tiver motivos concretos.</label>
+          <label><input type="radio" name="q6" value="C"> C) Não, a não ser que tenha alguém acompanhando.</label>
+          <label><input type="radio" name="q6" value="D"> D) Não gosto de prometer nem para mim mesmo.</label>
+        </div>
+
+        <div class="question-block">
+          <p>7. Quando recebe um novo desafio, como reage?</p>
+          <label><input type="radio" name="q7" value="A"> A) Organiza tudo para começar logo.</label>
+          <label><input type="radio" name="q7" value="B"> B) Analisa a lógica e o propósito do desafio.</label>
+          <label><input type="radio" name="q7" value="C"> C) Pede ajuda ou parceria para manter o ritmo.</label>
+          <label><input type="radio" name="q7" value="D"> D) Fica desmotivado se sentir que não escolheu isso.</label>
+        </div>
+
+        <div class="question-block">
+          <p>8. Como você se sente em relação à cobrança externa?</p>
+          <label><input type="radio" name="q8" value="A"> A) Tranquilo. Até gosto quando me cobram.</label>
+          <label><input type="radio" name="q8" value="B"> B) Só aceito se fizer sentido.</label>
+          <label><input type="radio" name="q8" value="C"> C) Funciona muito bem comigo.</label>
+          <label><input type="radio" name="q8" value="D"> D) Me irrita. Prefiro fazer no meu tempo.</label>
+        </div>
+
+        <div class="question-block">
+          <p>9. Em geral, qual sua maior motivação?</p>
+          <label><input type="radio" name="q9" value="A"> A) Ter estrutura e disciplina.</label>
+          <label><input type="radio" name="q9" value="B"> B) Saber o porquê de tudo.</label>
+          <label><input type="radio" name="q9" value="C"> C) Ter alguém esperando por mim.</label>
+          <label><input type="radio" name="q9" value="D"> D) Ser livre para decidir o que quero fazer.</label>
+        </div>
+
+        <div class="question-block">
+          <p>10. Em poucas palavras, como você vê regras e sistemas?</p>
+          <label><input type="radio" name="q10" value="A"> A) Úteis e necessários.</label>
+          <label><input type="radio" name="q10" value="B"> B) Só fazem sentido se forem bem justificadas.</label>
+          <label><input type="radio" name="q10" value="C"> C) Um mal necessário, se os outros precisam disso.</label>
+          <label><input type="radio" name="q10" value="D"> D) Algo que limita minha liberdade.</label>
+        </div>
+
+        <div class="button-container">
+          <button type="submit">Ver meu resultado</button>
+        </div>
+      </form>
+
+      <div id="result" class="result-box" style="display:none;"></div>
+    </main>
+      <script>
+        const form = document.getElementById('quizForm');
+        const resultBox = document.getElementById('result');
+
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const formData = new FormData(form);
+          const counts = { A: 0, B: 0, C: 0, D: 0 };
+
+          // Limpa os destaques anteriores
+          document.querySelectorAll('.question-block').forEach(block => {
+            block.style.border = 'none';
+          });
+
+          // Verifica se todas foram respondidas
+          let unanswered = [];
+          for (let i = 1; i <= 10; i++) {
+            if (!formData.has(`q${i}`)) {
+              unanswered.push(i);
+              const block = document.querySelector(`input[name="q${i}"]`)?.closest('.question-block');
+              if (block) {
+                block.style.border = '2px solid #ff4d4d';
+                block.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }
+            }
+          }
+
+          if (unanswered.length > 0) {
+            alert("Por favor, responda todas as perguntas antes de ver o resultado.");
+            return;
+          }
+
+          // Conta as letras escolhidas
+          for (const [_, value] of formData.entries()) {
+            counts[value]++;
+          }
+
+          let dominant = Object.keys(counts).reduce((a, b) => counts[a] >= counts[b] ? a : b);
+
+          const descriptions = {
+            A: `🔹 <strong>Executor (Upholder)</strong><br>Cumpre expectativas externas e internas.<br>Organizado, confiável, gosta de regras e planejamento.`,
+            B: `🔹 <strong>Questionador (Questioner)</strong><br>Cumpre expectativas internas, mas questiona as externas.<br>Gosta de lógica, autonomia e propósitos claros.`,
+            C: `🔹 <strong>Obediente (Obliger)</strong><br>Cumpre expectativas externas, mas falha nas internas.<br>Funciona bem com cobrança e suporte externo.`,
+            D: `🔹 <strong>Rebelde (Rebel)</strong><br>Resiste a todas as expectativas.<br>Valoriza a liberdade, autenticidade e autodeterminação.`
+          };
+
+          resultBox.innerHTML = `
+            <h3>Sua tendência dominante é:</h3>
+            <p>${descriptions[dominant]}</p>
+          `;
+
+          form.style.display = 'none';
+          resultBox.style.display = 'block';
+
+         
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,392 @@
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(135deg, #0a1a20, #1a2b35, #2a3f4a);
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(33, 150, 243, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(33, 150, 243, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.quiz-container {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 48px;
+  border-radius: 24px;
+  max-width: 850px;
+  width: 100%;
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  animation: fadeIn 1s ease-out;
+  position: relative;
+  z-index: 2;
+}
+
+.quiz-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border-radius: 24px;
+  pointer-events: none;
+}
+
+h2, h3 {
+  text-align: center;
+  margin-bottom: 32px;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 2.25rem;
+  background: linear-gradient(135deg, #ffffff 0%, #e3f2fd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #e8f4f8;
+}
+
+.question-block {
+  margin-bottom: 40px;
+  animation: slideUp 0.6s ease-out;
+  animation-fill-mode: both;
+  /* Novo fundo cinza para as perguntas */
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 28px 24px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.question-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.question-block:nth-child(n) {
+  animation-delay: calc(0.1s * var(--index, 0));
+}
+
+.question-block p {
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+  color: #ffffff;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  position: relative;
+  z-index: 1;
+}
+
+.question-block label {
+  display: block;
+  margin-bottom: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 16px 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(33, 150, 243, 0.2);
+  color: #e8f4f8;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  font-weight: 400;
+  z-index: 1;
+}
+
+.question-block label::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(33, 150, 243, 0.1) 0%, rgba(33, 150, 243, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.question-block label:hover {
+  background: rgba(33, 150, 243, 0.12);
+  border-color: rgba(33, 150, 243, 0.4);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(33, 150, 243, 0.15);
+}
+
+.question-block label:hover::before {
+  opacity: 1;
+}
+
+.question-block label:active {
+  transform: translateY(0);
+}
+
+/* Estilo para opção selecionada */
+.question-block input[type="radio"]:checked + label,
+.question-block label:has(input[type="radio"]:checked) {
+  background: rgba(33, 150, 243, 0.15);
+  border-color: rgba(33, 150, 243, 0.5);
+  color: #ffffff;
+  box-shadow: 0 8px 25px rgba(33, 150, 243, 0.2);
+  transform: translateY(-1px);
+}
+
+.question-block input[type="radio"]:checked + label::before,
+.question-block label:has(input[type="radio"]:checked)::before {
+  opacity: 1;
+}
+
+/* Suporte para estrutura HTML alternativa */
+.question-block label input[type="radio"]:checked {
+  accent-color: #64b5f6;
+}
+
+.question-block label:has(input[type="radio"]:checked) {
+  background: rgba(33, 150, 243, 0.15);
+  border-color: rgba(33, 150, 243, 0.5);
+  color: #ffffff;
+  box-shadow: 0 8px 25px rgba(33, 150, 243, 0.2);
+  transform: translateY(-1px);
+}
+
+input[type="radio"] {
+  margin-right: 12px;
+  width: 18px;
+  height: 18px;
+  accent-color: #2196f3;
+  position: relative;
+  z-index: 1;
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 48px;
+}
+
+button[type="submit"] {
+  background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  min-width: 160px;
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+}
+
+button[type="submit"]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background: linear-gradient(135deg, #1976d2 0%, #0d47a1 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(33, 150, 243, 0.4);
+}
+
+button[type="submit"]:hover::before {
+  opacity: 1;
+}
+
+button[type="submit"]:active {
+  transform: translateY(-1px);
+}
+
+.result-box {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 1.25rem;
+  animation: fadeIn 0.8s ease-out;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.fixed-home-button {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+  color: #ffffff;
+  border: none;
+  padding: 14px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 16px;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(33, 150, 243, 0.3);
+  z-index: 1000;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.fixed-home-button:hover {
+  background: linear-gradient(135deg, #1976d2 0%, #0d47a1 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(33, 150, 243, 0.4);
+}
+
+.fixed-home-button:active {
+  transform: translateY(0);
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px) scale(0.95);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(40px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0);
+  }
+}
+
+/* Responsividade aprimorada */
+@media (max-width: 768px) {
+  body {
+    padding: 16px;
+  }
+  
+  .quiz-container {
+    padding: 32px 24px;
+    border-radius: 20px;
+  }
+  
+  .question-block {
+    padding: 24px 20px;
+  }
+  
+  h2 {
+    font-size: 1.875rem;
+  }
+  
+  .question-block p {
+    font-size: 1.125rem;
+  }
+  
+  .question-block label {
+    padding: 14px 16px;
+  }
+  
+  button[type="submit"] {
+    font-size: 15px;
+    padding: 14px 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .quiz-container {
+    padding: 24px 20px;
+  }
+  
+  .question-block {
+    margin-bottom: 32px;
+    padding: 20px 16px;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  .question-block p {
+    font-size: 1rem;
+  }
+  
+  .question-block label {
+    padding: 12px 14px;
+    font-size: 0.95rem;
+  }
+  
+  button[type="submit"] {
+    font-size: 14px;
+    padding: 12px 24px;
+    min-width: 140px;
+  }
+}
+
+/* Micro-interações adicionais */
+@media (hover: hover) {
+  .quiz-container:hover {
+    box-shadow: 
+      0 30px 60px -12px rgba(0, 0, 0, 0.5),
+      0 0 0 1px rgba(255, 255, 255, 0.08);
+  }
+  
+  .question-block:hover {
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+  }
+}
